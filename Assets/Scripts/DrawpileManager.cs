@@ -52,9 +52,9 @@ public class DrawpileManager : MonoBehaviour
     {
         if (drawPile.Count == 0)
         {
-            RefillDeckFromDiscard();
+            //RefillDeckFromDiscard();
             //영상에서는 슬더스라서 덱 다쓰면 다시 리빌딩 하지만 우리는 패배로 판정
-            //return;
+            return;
         }
 
         if (currentHandSize < maxHandSize)
