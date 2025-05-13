@@ -15,7 +15,7 @@ public class DrawpileManager : MonoBehaviour
 
     public int currentHandSize;
     private HandManager handManager;
-    private DisCardManager discardManager;
+    //private DisCardManager discardManager;
     public TextMeshProUGUI drawPileCounter;
 
     void Start()
@@ -68,7 +68,7 @@ public class DrawpileManager : MonoBehaviour
         }
     }
 
-    private void RefillDeckFromDiscard()
+    /*private void RefillDeckFromDiscard()
     {
         if(discardManager == null)
         {
@@ -81,7 +81,7 @@ public class DrawpileManager : MonoBehaviour
             Utility.Shuffle(drawPile);
             currentIndex = 0; 
         }
-    }
+    }*/
     private void UpdateDrawPileCount()
     {
         drawPileCounter.text = drawPile.Count.ToString();

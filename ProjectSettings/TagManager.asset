@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - DiscardZone
+  - CardPreview
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - CardPreview
   - Water
   - UI
   - 

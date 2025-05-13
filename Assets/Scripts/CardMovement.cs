@@ -28,7 +28,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private int playPositionXDivider = 4;
     [SerializeField] private float playPositionXMultiplier = 1f;
     [SerializeField] private bool needUpdatePlayPosition = false;
-    [SerializeField] private Collider2D discardZone;
+    //[SerializeField] private Collider2D discardZone;
 
 
 
@@ -218,11 +218,11 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 }
 
                 // 2. DiscardZone에 드롭할 경우
-                if (hit.collider.CompareTag("DiscardZone"))
+               /* if (hit.collider.CompareTag("DiscardZone"))
                 {
-                    FinalizeCardDiscard();
+                   // FinalizeCardDiscard();
                     return;
-                }
+                }*/
             }
 
             // 유효한 대상이 아니면 원상복귀
@@ -242,13 +242,13 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         HandManager handManager = FindFirstObjectByType<HandManager>();
         handManager.cardsInHand.Remove(gameObject);
         handManager.UpdateHandVisuals();
-        DisCardManager discardManager = FindFirstObjectByType<DisCardManager>();
-        discardManager.AddDiscard(GetComponent<CardDisplay>().cardData); // 카드 점수 기록
+        //DisCardManager discardManager = FindFirstObjectByType<DisCardManager>();
+       // discardManager.AddDiscard(GetComponent<CardDisplay>().cardData); // 카드 점수 기록
         Destroy(gameObject);
     }
 
 
-    private void FinalizeCardDiscard()
+  /*  private void FinalizeCardDiscard()
     {
         DisCardManager discardManager = FindFirstObjectByType<DisCardManager>();
         discardManager.AddDiscard(GetComponent<CardDisplay>().cardData);
@@ -258,7 +258,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         handManager.UpdateHandVisuals();
 
         Destroy(gameObject);
-    }
+    }*/
 
 
     private void updateCardPlayPosition()
