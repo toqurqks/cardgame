@@ -3,6 +3,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+public enum CardState
+{
+    InHand,
+    OnGrid,
+    BeingDragged,
+    Inactive
+}
 
 public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -14,6 +21,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private Quaternion originalRotation;
     private Vector3 originalPosition;
     private GridManager gridManager;
+    public CardState cardState = CardState.InHand;
+
+
     [SerializeField] private float selectScale = 1.1f;
     [SerializeField] private Vector2 cardPlay;
     [SerializeField] private Vector3 playPosition;
@@ -28,7 +38,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private int playPositionXDivider = 4;
     [SerializeField] private float playPositionXMultiplier = 1f;
     [SerializeField] private bool needUpdatePlayPosition = false;
-    //[SerializeField] private Collider2D discardZone;
+    
 
 
 
@@ -116,12 +126,22 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     }
 
     public void OnPointerDown(PointerEventData eventData)
+{
+    if (currentState == 0 && cardState == CardState.OnGrid)
     {
-        if (currentState == 1)
+        var display = GetComponent<CardDisplay>();
+        var panel = FindFirstObjectByType<CardUIPanel>();
+
+        if (display?.cardData != null && panel != null)
         {
-            currentState = 2;
+            panel.SetCard(display.cardData);
         }
     }
+    else if (currentState == 1)
+    {
+        currentState = 2;
+    }
+}
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -152,46 +172,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         // 카드의 위치를 원위치
         rectTransform.localRotation = Quaternion.identity;
         rectTransform.position = Vector3.Lerp(rectTransform.position, Input.mousePosition, lerpFactor);
+
     }
-    /*
-    private void HandlePlayState()
-    {
-        rectTransform.localPosition = playPosition;
-        rectTransform.localRotation = Quaternion.identity;
-
-        if (!Input.GetMouseButton(0))
-        {
-            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
-
-            if (hit.collider != null)
-            {
-                if (hit.collider.TryGetComponent<GridCell>(out GridCell cell))
-                {
-                    Vector2 targetPos = cell.gridIndex;
-                    if (gridManager.AddObjectToGrid(GetComponent<CardDisplay>().cardData.prefab, targetPos))
-                    {
-                        FinalizeCardPlay(); // 필드 배치 처리
-                        return;
-                    }
-                }
-                else if (hit.collider.CompareTag("DiscardZone"))
-                {
-                    FinalizeCardDiscard(); // 새로 추가할 discard 처리
-                    return;
-                }
-            }
-
-            TransitionToState0(); // 어떤 조건도 해당 안되면 원상복귀
-        }
-
-        if (Input.mousePosition.y < cardPlay.y)
-        {
-            currentState = 2;
-            playArrow.SetActive(false);
-        }
-    }
-    */
+    
 
     private void HandlePlayState()
     {
@@ -216,13 +199,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                         return;
                     }
                 }
-
-                // 2. DiscardZone에 드롭할 경우
-               /* if (hit.collider.CompareTag("DiscardZone"))
-                {
-                   // FinalizeCardDiscard();
-                    return;
-                }*/
             }
 
             // 유효한 대상이 아니면 원상복귀
@@ -242,23 +218,14 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         HandManager handManager = FindFirstObjectByType<HandManager>();
         handManager.cardsInHand.Remove(gameObject);
         handManager.UpdateHandVisuals();
-        //DisCardManager discardManager = FindFirstObjectByType<DisCardManager>();
-       // discardManager.AddDiscard(GetComponent<CardDisplay>().cardData); // 카드 점수 기록
+
+        cardState = CardState.OnGrid;
+        currentState = 0;
+        glowEffect.SetActive(false);
+        playArrow.SetActive(false);
         Destroy(gameObject);
     }
-
-
-  /*  private void FinalizeCardDiscard()
-    {
-        DisCardManager discardManager = FindFirstObjectByType<DisCardManager>();
-        discardManager.AddDiscard(GetComponent<CardDisplay>().cardData);
-
-        HandManager handManager = FindFirstObjectByType<HandManager>();
-        handManager.cardsInHand.Remove(gameObject);
-        handManager.UpdateHandVisuals();
-
-        Destroy(gameObject);
-    }*/
+  
 
 
     private void updateCardPlayPosition()

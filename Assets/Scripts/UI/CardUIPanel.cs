@@ -22,15 +22,10 @@ public class CardUIPanel : MonoBehaviour
             return;
         }
 
-        gameObject.SetActive(true); // 패널 표시
-        currentCard = card;
-
+        gameObject.SetActive(true);
         nameText.text = card.cardName;
         attackText.text = $"ATK: {card.damage}";
         healthText.text = $"HP: {card.Durability}";
-
-        attackButton.gameObject.SetActive(true);
-        moveButton.gameObject.SetActive(true);
     }
 
     public void HandleAttack()
