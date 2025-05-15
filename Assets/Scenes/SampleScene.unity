@@ -335,11 +335,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!224 &1599818159 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4968437042063853569, guid: 691a958d2ec97d446bd8375295ea1d62, type: 3}
   m_PrefabInstance: {fileID: 7630560200477081171}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of 871abe2 (중간저장)
 --- !u!1001 &5430986275372786641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -452,33 +455,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 439764003063424998, guid: 8a0b0fcd50d30c3408ab9925f1406d76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6528152572985091984}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0b0fcd50d30c3408ab9925f1406d76, type: 3}
---- !u!1 &6528152572985091983 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 439764003063424998, guid: 8a0b0fcd50d30c3408ab9925f1406d76, type: 3}
-  m_PrefabInstance: {fileID: 6528152572985091982}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6528152572985091984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6528152572985091983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c891c22abec16e48a46412c748066c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  attackText: {fileID: 0}
-  healthText: {fileID: 0}
-  attackButton: {fileID: 0}
-  moveButton: {fileID: 0}
 --- !u!1001 &6875850889781423675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -567,10 +545,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 668602980477832923, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1166859872225781250, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
       propertyPath: m_text
       value: draw
@@ -579,17 +553,9 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 34.6
       objectReference: {fileID: 0}
-    - target: {fileID: 6143499316805748114, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6428489137146648391, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6824214405993113959, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8006101014569675223, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
       propertyPath: discardCount
@@ -599,12 +565,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 4056678988892337179, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
     - {fileID: 3515468302150324866, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 473175089370755235, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1599818159}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
+<<<<<<< HEAD
 --- !u!224 &6875850889781423676 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 473175089370755235, guid: 1ab52610da3a99146a44d01d82ab649e, type: 3}
@@ -719,6 +683,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691a958d2ec97d446bd8375295ea1d62, type: 3}
+=======
+>>>>>>> parent of 871abe2 (중간저장)
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
